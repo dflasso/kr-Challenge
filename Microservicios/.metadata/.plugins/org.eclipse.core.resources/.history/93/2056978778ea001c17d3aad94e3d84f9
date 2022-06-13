@@ -1,0 +1,11 @@
+package ec.com.danyLassoSolution.emailNotifier.senders;
+
+/**
+ * 
+ * @author danny_lasso
+ * Mediante el patron fachada, envuelve los senderes y selección de credenciales
+ *
+ */
+public interface Notifier {
+
+}

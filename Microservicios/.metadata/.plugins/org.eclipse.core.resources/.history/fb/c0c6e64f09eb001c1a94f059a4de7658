@@ -1,0 +1,18 @@
+package ec.com.danylassosolution.users.models.constants;
+
+public enum VaccineType {
+	SPUTNIK, ASTRAZENECA, PFIZER, JHONSON_JHONSON;
+	
+
+	private String code;
+
+	public String getCode() {
+		return code;
+	}
+
+	private VaccineType(String code) {
+		this.code = code;
+	}
+	
+	
+}

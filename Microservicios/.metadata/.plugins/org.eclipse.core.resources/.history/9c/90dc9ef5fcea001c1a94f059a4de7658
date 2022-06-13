@@ -1,0 +1,13 @@
+package ec.com.danylassosolution.users.services.models;
+
+import ec.com.danylassosolution.users.models.entities.User;
+
+public interface FindUserByNumDocument {
+
+	/**
+	 * 
+	 * @param numDocument
+	 * @return
+	 */
+	public User find(String numDocument);
+}

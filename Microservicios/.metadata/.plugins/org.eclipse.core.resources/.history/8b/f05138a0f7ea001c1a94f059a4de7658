@@ -1,0 +1,46 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import ec.com.danylassosolution.users.models.entities.User;
+import lombok.Data;
+
+@Data
+public class EmployeeRegisterReq {
+
+	@NotEmpty(message = "Email is required")
+	@Size(min = 3, max = 200, message = "Email must have min 3 character to 200 character")
+	private String ci;
+	
+	@NotEmpty(message = "Email is required")
+	@Size(min = 3, max = 200, message = "Email must have min 3 character to 200 character")
+	private String names;
+	
+	@NotEmpty(message = "Email is required")
+	@Size(min = 3, max = 200, message = "Email must have min 3 character to 200 character")
+	private String lastnames;
+	
+	@NotEmpty(message = "Email is required")
+	@Size(min = 3, max = 200, message = "Email must have min 3 character to 200 character")
+	@Email(message = "Email malformat")
+	private String email;
+	
+	public User toUserEntity() {
+		User user = new User();
+		
+		user.setNumDocument(ci);
+		user.setNames(names);
+		user.setLastnames(lastnames);
+		user.setEmail(email);
+		user.setRol("emp");
+		
+		return user;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("[ci]: %s; [names]: %s; [lastnames]: %s; [email]: %s", ci, names, lastnames, email);
+	}
+}

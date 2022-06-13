@@ -1,0 +1,8 @@
+package ec.com.danylassosolution.users.controllers.v1;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class EmployeeController {
+
+}

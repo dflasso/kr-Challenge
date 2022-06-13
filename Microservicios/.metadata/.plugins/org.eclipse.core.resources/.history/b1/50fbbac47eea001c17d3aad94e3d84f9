@@ -1,0 +1,10 @@
+package ec.com.danyLassoSolution.emailNotifier.model.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "email_settings")
+public class EmailSetting {
+
+}

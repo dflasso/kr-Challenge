@@ -1,0 +1,7 @@
+package ec.com.danylassosolution.authentication.services.imp;
+
+import ec.com.danylassosolution.authentication.services.LoginUserService;
+
+public class LoginUserServiceImp implements LoginUserService {
+
+}

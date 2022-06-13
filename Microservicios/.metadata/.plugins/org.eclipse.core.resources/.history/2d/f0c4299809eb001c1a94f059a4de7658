@@ -1,0 +1,25 @@
+package ec.com.danylassosolution.users.converters;
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+
+import ec.com.danylassosolution.users.models.constants.VaccineType;
+
+@Converter(autoApply = true)
+public class VaccineTypeConverter implements AttributeConverter<VaccineType, String> {
+
+	@Override
+	public String convertToDatabaseColumn(VaccineType attribute) {
+		if(attribute == null) {
+			return null;
+		}
+		return null;
+	}
+
+	@Override
+	public VaccineType convertToEntityAttribute(String dbData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

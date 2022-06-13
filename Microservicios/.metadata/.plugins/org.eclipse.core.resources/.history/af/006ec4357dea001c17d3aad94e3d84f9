@@ -1,0 +1,9 @@
+package ec.com.danyLassoSolution.emailNotifier.model.dto;
+
+public class LoginNotification extends Notification {
+
+	private String username;
+	private String rol;
+	private String tempPassword;
+	private String expirationDate;
+}

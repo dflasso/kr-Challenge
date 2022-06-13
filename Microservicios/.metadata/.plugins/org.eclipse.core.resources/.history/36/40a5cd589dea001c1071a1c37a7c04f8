@@ -1,0 +1,46 @@
+package ec.com.danyLassoSolution.emailNotifier.senders.imp;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import ec.com.danyLassoSolution.emailNotifier.model.entities.EmailProviderSetting;
+import ec.com.danyLassoSolution.emailNotifier.senders.SenderProvider;
+
+@Service("sender-email-smtp")
+@Primary
+public class SenderProviderSMTP implements SenderProvider {
+	
+	private JavaMailSender senderDefault;
+	
+	@PostConstruct
+	private void init() {
+		
+	}
+
+	@Override
+	public JavaMailSender getSenderDefault() {
+		return null;
+	}
+
+	@Override
+	public JavaMailSender create(EmailProviderSetting emailSettings) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JavaMailSender updateSenderDeafult(EmailProviderSetting emailSettings) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JavaMailSender updateSenderDeafult() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

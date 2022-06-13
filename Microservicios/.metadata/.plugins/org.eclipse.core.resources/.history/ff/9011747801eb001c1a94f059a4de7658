@@ -1,0 +1,7 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import ec.com.danylassosolution.users.services.models.UpdateEmployee;
+
+public class UpdateEmployeeImp implements UpdateEmployee {
+
+}

@@ -1,0 +1,33 @@
+package ec.com.danyLassoSolution.emailNotifier.model.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "email_settings")
+public class EmailProviderSetting {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_email_settings")
+	private Long id;
+	
+	@Column(name = "host_emset")
+	private String host;
+	
+	@Column(name = "username_emset")
+	private String username;
+
+	@Column(name = "password_emset")
+    private String password;
+
+	@Column(name = "properties_emset")
+    private String propertiesAsJson;
+
+	@Column(name = "by_default_emset")
+	private Boolean byDefault;
+}

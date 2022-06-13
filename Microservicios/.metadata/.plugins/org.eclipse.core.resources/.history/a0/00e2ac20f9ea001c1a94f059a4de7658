@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.users.validations;
+
+import javax.validation.ConstraintValidator;
+
+import ec.com.danylassosolution.users.annotations.CI;
+
+public class CiCheck implements ConstraintValidator<CI, String> {
+
+}

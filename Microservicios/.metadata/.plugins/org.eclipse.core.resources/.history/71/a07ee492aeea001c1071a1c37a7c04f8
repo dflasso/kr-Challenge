@@ -1,0 +1,7 @@
+package ec.com.danyLassoSolution.emailNotifier.config;
+
+import org.springframework.scheduling.annotation.AsyncConfigurer;
+
+public class SpringAsyncConfig  implements AsyncConfigurer {
+
+}

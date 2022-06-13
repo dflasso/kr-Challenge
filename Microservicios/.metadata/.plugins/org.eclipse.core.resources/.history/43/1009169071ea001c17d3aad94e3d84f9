@@ -1,0 +1,7 @@
+package ec.com.danyLassoSolution.emailNotifier.config;
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+}

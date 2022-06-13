@@ -1,0 +1,21 @@
+package ec.com.danylassosolution.users.validations;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+import ec.com.danylassosolution.users.annotations.CI;
+
+/**
+ * 
+ * @author dlasso
+ *
+ */
+public class CiCheck implements ConstraintValidator<CI, String> {
+
+	@Override
+	public boolean isValid(String value, ConstraintValidatorContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

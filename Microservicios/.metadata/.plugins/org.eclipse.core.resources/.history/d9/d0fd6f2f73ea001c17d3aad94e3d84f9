@@ -1,0 +1,10 @@
+package ec.com.danyLassoSolution.emailNotifier.senders;
+
+/**
+ * 
+ * @author danny_lasso
+ *
+ */
+public interface Notifier {
+
+}

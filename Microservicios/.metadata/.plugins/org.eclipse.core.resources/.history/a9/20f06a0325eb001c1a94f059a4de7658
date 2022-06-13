@@ -1,0 +1,5 @@
+package ec.com.danylassosolution.authentication.security;
+
+public class AppUserDetailsService {
+
+}

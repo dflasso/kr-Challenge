@@ -1,0 +1,23 @@
+package ec.com.danyLassoSolution.emailNotifier.services.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ec.com.danyLassoSolution.emailNotifier.model.entities.EmailProviderSetting;
+import ec.com.danyLassoSolution.emailNotifier.repositories.EmailProviderSettingRepository;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class FindEmailProviderSettingService {
+
+	@Autowired
+	private EmailProviderSettingRepository emailProviderSettingsDao;
+	
+	public EmailProviderSetting findSettingsByDefault() {
+		
+		emailProviderSettingsDao.findByByDefault(true);
+		
+		return null;
+	}
+}

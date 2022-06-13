@@ -1,0 +1,5 @@
+package ec.com.danyLassoSolution.emailNotifier.senders;
+
+public interface Notifier {
+
+}

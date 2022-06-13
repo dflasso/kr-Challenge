@@ -1,0 +1,33 @@
+package ec.com.danylassosolution.users.models.constants;
+
+public enum AppErrorsCodesAndMessages {
+	FIELD_VALIDATION("U0001", "Field validation"),
+	
+	USER_SAVE_ERROR("U0002", "Unexpected error in saved user data"),
+	USER_SAVE_ERROR_CONSTRAINT_VALIDATION("U0003", "Constraint Validation in user data"),
+	USER_NOT_FOUND("U0004", "User not found"),
+	USER_ILLEGAL_DATA("U0005", "Users register has illegal data"),
+	USER_NUM_DOCUMENT_ALREADY_USED("U0006", "Another previously registered user with this document number"),
+	
+	
+	VACCINES_IS_EMPTY("U0007", "LIST OF VACCINES IS EMPTY")
+	VACCINE_TYPE("U0008", "LIST OF VACCINES IS EMPTY")
+	;
+	
+	private String code;
+	private String message;
+	
+	public String getCode() {
+		return code;
+	}
+	public String getMessage() {
+		return message;
+	}
+	private AppErrorsCodesAndMessages(String code, String message) {
+		this.code = code;
+		this.message = message;
+	}
+	
+	
+	
+}

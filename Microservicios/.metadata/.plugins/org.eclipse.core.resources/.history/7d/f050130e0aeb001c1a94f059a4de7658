@@ -1,0 +1,78 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+
+import ec.com.danylassosolution.users.annotations.BirthdayValidationFullAge;
+import ec.com.danylassosolution.users.exceptions.BusinessRulesException;
+import ec.com.danylassosolution.users.models.constants.AppErrorsCodesAndMessages;
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.models.entities.Vaccines;
+import lombok.Data;
+
+@Data
+public class EmployeeUpdateReq {
+
+	@NotNull(message = "Id is required")
+	@Min(value = 1, message = "Id invalid")
+	private Long id;
+	
+	@NotNull(message = "birthday is required")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@PastOrPresent(message = "birthday is not a date in the past")
+	@BirthdayValidationFullAge
+	private LocalDate birthday;
+	
+	@NotNull(message = "address of employee is required")
+	private Address address;
+	
+	@NotEmpty(message = "Cellphone si required")
+	@Size(min = 10, max = 13, message = "Cellphone must have of 10  to 13 digits")
+	@Pattern(regexp = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$", message = "phone number malformed")
+	private String cellphone;
+	
+	@NotNull(message = "isVaccinated is required")
+	private Boolean isVaccinated;
+	
+	private List<Vaccines> vaccines;
+	
+	public User toUserEntity(User user) {
+		
+		user.setBirthday(birthday);
+		user.setCellphone(cellphone);
+		user.setIsVaccinated(isVaccinated);
+		
+		if(isVaccinated && this.vaccines != null && !this.vaccines.isEmpty()) {
+			user.setVaccines(vaccines);
+		}else {
+			ApiError apiError = new ApiError(HttpStatus.PRECONDITION_FAILED, AppErrorsCodesAndMessages.VACCINES_IS_EMPTY.getMessage());
+			
+			ApiValidationError subError = ApiValidationError.builder()
+															.code(AppErrorsCodesAndMessages.VACCINES_IS_EMPTY.getCode())
+															.object("EmployeeUpdateReq")
+															.message(AppErrorsCodesAndMessages.VACCINES_IS_EMPTY.getMessage())
+															.rejectedValue(this)
+															.field("isVaccinated is true")
+															.build();
+			apiError.addSubError(subError);
+			
+			throw new BusinessRulesException(apiError);
+		}
+		
+		user.setAddress(Arrays.asList(this.address));
+		
+		return user;
+	}
+}

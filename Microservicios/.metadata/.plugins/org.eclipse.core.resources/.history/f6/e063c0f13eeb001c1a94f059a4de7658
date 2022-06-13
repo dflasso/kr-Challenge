@@ -1,0 +1,19 @@
+package ec.com.danylassosolution.authentication.services.models.imp;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.authentication.models.entities.UserApp;
+import ec.com.danylassosolution.authentication.services.models.SaveUserCredentials;
+
+@Service
+@Primary
+public class SaveUserCredentialsImp implements SaveUserCredentials {
+
+	@Override
+	public UserApp save(UserApp user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,13 @@
+spring:
+  mail:
+    host: smtp.mailgun.org
+    port: 587
+    username: postmaster@sandbox88c63985b2714131b419885f308d80ae.mailgun.org
+    password: danny#12345
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+      

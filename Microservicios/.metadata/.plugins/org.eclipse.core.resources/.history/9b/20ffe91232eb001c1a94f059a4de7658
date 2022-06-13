@@ -1,0 +1,8 @@
+package ec.com.danylassosolution.authentication.services.models;
+
+import ec.com.danylassosolution.authentication.models.constants.UserApp;
+
+public interface FindUserAppByNickname {
+
+	public UserApp find(String nickname);
+}

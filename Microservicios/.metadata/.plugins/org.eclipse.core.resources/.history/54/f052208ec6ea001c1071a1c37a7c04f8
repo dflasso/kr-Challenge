@@ -1,0 +1,11 @@
+package ec.com.danylassosolution.users.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableTransactionManagement
+public class SpecificationResolverConfig implements WebMvcConfigurer {
+
+}

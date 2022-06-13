@@ -1,0 +1,46 @@
+package ec.com.danylassosolution.users.models.entities;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import ec.com.danylassosolution.users.models.constants.AddressTypes;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Address {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_address")
+	private Long id;
+	
+	@Column(name = "principal_street_adr", length = 255, nullable = false)
+	private String principalStreet;
+	
+	@Column(name = "secundary_street_adr", length = 255)
+	private String secundaryStreet;
+	
+	@Column(name = "num_home_adr", length = 10, nullable = false)
+	private String numHome;
+	
+	@Column(name = "neighborhood_adr", length = 255)
+	private String neighborhood;
+	
+	@Column(name = "reference_adr", length = 511)
+	private String reference;
+	
+	@Column(name = "type_address_adr")
+	private AddressTypes type;
+}

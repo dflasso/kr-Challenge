@@ -1,0 +1,9 @@
+package ec.com.danyLassoSolution.emailNotifier.model.constants;
+
+public enum AppErrorsCodesAndMessages {
+	FIELD_VALIDATION;
+	
+	private String code;
+	private String message;
+	
+}

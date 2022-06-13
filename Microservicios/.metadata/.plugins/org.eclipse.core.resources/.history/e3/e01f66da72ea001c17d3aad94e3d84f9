@@ -1,0 +1,5 @@
+package ec.com.danyLassoSolution.emailNotifier.model.constants;
+
+public enum EmailCredentials {
+
+}

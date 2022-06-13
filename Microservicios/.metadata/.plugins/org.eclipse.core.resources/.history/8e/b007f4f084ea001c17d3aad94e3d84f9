@@ -1,0 +1,5 @@
+package ec.com.danyLassoSolution.emailNotifier.controllers.v1;
+
+public class EmailNotificationController {
+
+}

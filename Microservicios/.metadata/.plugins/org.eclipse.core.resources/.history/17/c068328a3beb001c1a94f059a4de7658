@@ -1,0 +1,7 @@
+package ec.com.danylassosolution.authentication.util;
+
+
+@Service
+public class RecoverDataOnFailRequest {
+
+}

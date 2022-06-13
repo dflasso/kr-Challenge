@@ -1,0 +1,17 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import java.time.LocalDate;
+
+import lombok.Data;
+
+@Data
+public class EmployeeUpdateReq {
+
+	private LocalDate birthday;
+	
+	private String names;
+	
+	private String lastnames;
+	
+	private String email;
+}

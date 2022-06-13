@@ -1,0 +1,33 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import ec.com.danylassosolution.users.models.entities.User;
+import lombok.Data;
+
+@Data
+public class EmployeeRegisterReq {
+
+	private String ci;
+	
+	private String names;
+	
+	private String lastnames;
+	
+	private String email;
+	
+	public User toUserEntity() {
+		User user = new User();
+		
+		user.setNumDocument(ci);
+		user.setNames(names);
+		user.setLastnames(lastnames);
+		user.setEmail(email);
+		user.setRol("");
+		
+		return user;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("[ci]: %s; [names]: %s; [lastnames]: %s; [email]: %s", ci, names, lastnames, email);
+	}
+}

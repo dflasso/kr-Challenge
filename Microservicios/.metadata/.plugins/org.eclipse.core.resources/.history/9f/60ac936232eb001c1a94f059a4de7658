@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.authentication.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import ec.com.danylassosolution.authentication.models.constants.UserApp;
+
+public interface UserAppRepository extends JpaRepository<UserApp, Long> {
+
+}

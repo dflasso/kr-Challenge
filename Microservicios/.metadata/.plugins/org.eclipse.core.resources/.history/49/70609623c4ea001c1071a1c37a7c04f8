@@ -1,0 +1,11 @@
+package ec.com.danylassosolution.users.converters;
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+
+import ec.com.danylassosolution.users.models.constants.AddressTypes;
+
+@Converter(autoApply = true)
+public class AddressTypesConverter implements AttributeConverter<AddressTypes, String> {
+
+}

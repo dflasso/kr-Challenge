@@ -1,0 +1,38 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.services.models.DeleteUser;
+import ec.com.danylassosolution.users.services.models.FindUserById;
+import ec.com.danylassosolution.users.services.models.FindUserByNumDocument;
+
+public class DeleteUserImp implements DeleteUser {
+	
+
+	@Autowired
+	private FindUserById findUserById;
+	
+	@Autowired
+	private FindUserByNumDocument findUserByNumDocument;
+
+	@Override
+	public void delete(Long id) {
+		User user = findUserById.find(id);
+		this.delete(user);
+	}
+
+	@Override
+	public void delete(String numDocument) {
+		User user = findUserByNumDocument.find(numDocument);
+		this.delete(user);
+		
+	}
+
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

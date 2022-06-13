@@ -1,0 +1,5 @@
+package ec.com.danylassosolution.authentication.controllers.v1;
+
+public class AuthController {
+
+}

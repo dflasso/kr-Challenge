@@ -1,0 +1,61 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+      - id: auth
+        uri: http://auth:9002
+        predicates:
+        - Path=/auth/**
+        filters:
+        - RewritePath=/auth(?<segment>/?.*), $\{segment}
+      - id: signer
+        uri: http://signer:8080
+        predicates:
+        - Path=/signer/**
+        filters:
+        - RewritePath=/signer(?<segment>/?.*), $\{segment}
+      - id: notifier
+        uri: http://notifier:8083
+        predicates:
+        - Path=/notifier/**
+        filters:
+        - RewritePath=/notifier(?<segment>/?.*), $\{segment}
+      - id: webCore
+        uri: http://webCore:9004
+        predicates:
+        - Path=/web_core/**
+        filters:
+        - RewritePath=/web_core(?<segment>/?.*), $\{segment}
+      - id: repo
+        uri: http://repo:9003
+        predicates:
+        - Path=/repo/**
+        filters:
+        - RewritePath=/repo(?<segment>/?.*), $\{segment}
+      - id: payments
+        uri: http://payments:9005
+        predicates:
+        - Path=/pay/**
+        filters:
+        - RewritePath=/pay(?<segment>/?.*), $\{segment}
+      - id: integrations
+        uri: http://integrations:8080
+        predicates:
+        - Path=/integrations/**
+        filters:
+        - RewritePath=/integrations(?<segment>/?.*), $\{segment}
+      - id: notifierPendingAuth
+        uri: http://reports-pending-autorizations:8080
+        predicates:
+        - Path=/notifier-pending-auth/**
+        filters:
+        - RewritePath=/notifier-pending-auth(?<segment>/?.*), $\{segment}
+

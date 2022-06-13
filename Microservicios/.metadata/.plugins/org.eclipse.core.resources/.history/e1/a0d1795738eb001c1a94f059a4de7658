@@ -1,0 +1,89 @@
+package ec.com.danylassosolution.authentication.services.imp;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.authentication.models.constants.AppErrorsCodesAndMessages;
+import ec.com.danylassosolution.authentication.models.constants.Rols;
+import ec.com.danylassosolution.authentication.models.dtos.ApiError;
+import ec.com.danylassosolution.authentication.models.dtos.ApiValidationError;
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserReq;
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserResp;
+import ec.com.danylassosolution.authentication.security.JwtConfig;
+import ec.com.danylassosolution.authentication.security.JwtTokenProvider;
+import ec.com.danylassosolution.authentication.services.LoginUserService;
+import ec.com.danylassosolution.authentication.util.LoggerCustom;
+
+/**
+ * 
+ * @author dlasso
+ *
+ */
+@Service
+@Primary
+public class LoginUserServiceImp implements LoginUserService {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
+	
+	@Autowired
+	private JwtConfig jwtConfig;
+
+	@Autowired
+	private LoggerCustom logger;
+	
+	@Override
+	public LoginUserResp login(LoginUserReq request) {
+		try {
+			Authentication authentication =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsernameOrEmail(), request.getPassword()) );
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			Map<String, Object> claims =  new HashMap<String, Object>();
+			claims.put("rol", Rols.USER_ROOT);
+			String jwt = jwtTokenProvider.generateJwt(authentication, claims);
+			return new LoginUserResp(jwt, jwtConfig.getPrefix());	
+		} catch (BadCredentialsException e) {
+			// TODO: handle exception
+		} catch (LockedException e) {
+			// TODO: handle exception
+		} catch (DisabledException e) {
+			// TODO: handle exception
+		} catch (AccountExpiredException e) {
+			// TODO: handle exception
+		} catch (CredentialsExpiredException  e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	private ApiError buildApiErrorFailedAuth(Throwable ex) {
+		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, AppErrorsCodesAndMessages.AUTH_FAILED.getMessage());
+		
+		ApiValidationError subError = ApiValidationError.builder()
+														.code(AppErrorsCodesAndMessages.AUTH_FAILED.getCode())
+														.message(AppErrorsCodesAndMessages.AUTH_FAILED.getMessage())
+														.build();
+		apiError.addSubError(subError);
+		
+		logger.error(apiError, getClass(), "login", ex);
+		
+		return apiError;
+	}
+
+}

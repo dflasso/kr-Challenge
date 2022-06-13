@@ -1,0 +1,32 @@
+package ec.com.danyLassoSolution.emailNotifier.model.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * 
+ * @author dlasso
+ *
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+public class ApiValidationError extends ApiSubError {
+
+	private String object;
+	private String field;
+	private Object rejectedValue;
+	private String message;
+	private String code;
+	
+	
+	public ApiValidationError(String object, String message) {
+		super();
+		this.object = object;
+		this.message = message;
+	}
+	
+	
+
+}

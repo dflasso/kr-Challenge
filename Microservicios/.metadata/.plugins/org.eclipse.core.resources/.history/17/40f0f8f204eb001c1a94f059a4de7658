@@ -1,0 +1,5 @@
+package ec.com.danylassosolution.users.annotations;
+
+public @interface BirthdayValidationFullAge {
+
+}

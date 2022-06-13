@@ -1,0 +1,34 @@
+package ec.com.danylassosolution.users.models.entities;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "vaccines")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Vaccines {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_vaccines")
+	private Long id;
+	
+	@Column(name = "type_vacc", length = 255)
+	private String type;
+
+    @Column(name = "date_vacc")
+	private LocalDate date_vacc;
+}

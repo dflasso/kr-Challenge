@@ -1,0 +1,11 @@
+package ec.com.danyLassoSolution.emailNotifier.repositories;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import ec.com.danyLassoSolution.emailNotifier.model.entities.EmailProviderSetting;
+
+
+public class EmailProviderSettingRepository extends JpaRepository<EmailProviderSetting, Long> {
+
+}

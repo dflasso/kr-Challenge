@@ -1,0 +1,6 @@
+package ec.com.danylassosolution.authentication.services;
+
+public interface SignupEmployeesServices {
+
+	
+}

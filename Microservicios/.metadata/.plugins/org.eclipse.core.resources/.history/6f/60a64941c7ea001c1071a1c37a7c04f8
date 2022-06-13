@@ -1,0 +1,6 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+public class EmployeeRegisterReq {
+
+	private String ci;
+}

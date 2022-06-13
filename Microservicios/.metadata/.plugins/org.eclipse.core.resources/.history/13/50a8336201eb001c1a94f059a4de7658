@@ -1,0 +1,14 @@
+package ec.com.danylassosolution.users.services.models;
+
+import ec.com.danylassosolution.users.models.dtos.EmployeeUpdateReq;
+import ec.com.danylassosolution.users.models.entities.User;
+
+public interface UpdateEmployeeImp {
+
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public User update(EmployeeUpdateReq request);
+}

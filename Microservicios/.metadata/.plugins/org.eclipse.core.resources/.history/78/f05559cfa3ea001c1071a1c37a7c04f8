@@ -1,0 +1,47 @@
+package ec.com.danyLassoSolution.emailNotifier.utils;
+
+import java.time.format.DateTimeFormatter;
+
+import org.springframework.stereotype.Component;
+
+import ec.com.danyLassoSolution.emailNotifier.model.dto.ApiError;
+import ec.com.danyLassoSolution.emailNotifier.model.dto.ApiValidationError;
+import lombok.extern.slf4j.Slf4j;
+
+@Component
+@Slf4j
+public class LoggerCustom {
+
+	public void error(ApiError apiError, Class<?> classFeacture, String method, Throwable ex) {
+		log.error("[ERROR]\nDEBUG INFO: {}, Method: {}, Exception: {}", classFeacture.getName(), method, ex.getMessage());
+	}
+	
+	public void error(ApiError apiError, Class<?> ClassFeacture, String method) {
+		
+	}
+	
+	private String getInfoApiError(ApiError apiError) {
+		StringBuilder info = new StringBuilder("API ERROR INFO:\n");
+		
+		if(apiError.getStatus() != null) {
+			info.append("HttpStatus:  " + apiError.getStatus().getReasonPhrase());
+		}
+		
+		if(apiError.getMessage() != null) {
+			info.append("\nMessage:  " + apiError.getMessage());
+		}
+		
+		if(apiError.getTimestamp() != null) {
+			 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+		     String formatDateTime = apiError.getTimestamp().format(formatter);
+		     
+		     info.append("\nTimestamp:  " + formatDateTime);
+		}
+		
+
+		if(apiError.getSubErrors() != null && apiError.getSubErrors() instanceof ApiValidationError) {
+			
+		}
+	}
+}

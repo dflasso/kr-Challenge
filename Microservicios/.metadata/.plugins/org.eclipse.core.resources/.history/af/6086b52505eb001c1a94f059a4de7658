@@ -1,0 +1,5 @@
+package ec.com.danylassosolution.users.validations;
+
+public class BirthdayCheck {
+
+}

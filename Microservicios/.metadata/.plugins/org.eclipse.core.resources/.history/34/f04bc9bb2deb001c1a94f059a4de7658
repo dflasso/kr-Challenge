@@ -1,0 +1,63 @@
+package ec.com.danylassosolution.authentication.services.imp;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.authentication.models.constants.Rols;
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserReq;
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserResp;
+import ec.com.danylassosolution.authentication.security.JwtConfig;
+import ec.com.danylassosolution.authentication.security.JwtTokenProvider;
+import ec.com.danylassosolution.authentication.services.LoginUserService;
+
+/**
+ * 
+ * @author dlasso
+ *
+ */
+@Service
+@Primary
+public class LoginUserServiceImp implements LoginUserService {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
+	
+	@Autowired
+	private JwtConfig jwtConfig;
+	
+	@Override
+	public LoginUserResp login(LoginUserReq request) {
+		try {
+			
+		} catch (BadCredentialsException e) {
+			// TODO: handle exception
+		} catch (LockedException e) {
+			// TODO: handle exception
+		} catch (DisabledException e) {
+			// TODO: handle exception
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		Authentication authentication =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsernameOrEmail(), request.getPassword()) );
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		Map<String, Object> claims =  new HashMap<String, Object>();
+		claims.put("rol", Rols.USER_ROOT);
+		String jwt = jwtTokenProvider.generateJwt(authentication, claims);
+		return new LoginUserResp(jwt, jwtConfig.getPrefix());
+	}
+
+}

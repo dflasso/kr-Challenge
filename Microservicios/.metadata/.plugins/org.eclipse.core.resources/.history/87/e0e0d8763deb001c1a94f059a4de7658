@@ -1,0 +1,58 @@
+package ec.com.danylassosolution.authentication.webclients;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
+
+import ec.com.danylassosolution.authentication.models.dtos.EmployeRegisterResp;
+import ec.com.danylassosolution.authentication.models.dtos.SignupEmployeeReq;
+import lombok.Getter;
+import reactor.core.publisher.Mono;
+
+@Service
+@Getter
+public class WebClientUsers {
+
+	@Value("${microservices.users.host}")
+	private String baseUrl;
+	
+	@Value("${microservices.users.apis.register-employee}")
+	private String apiRegisterEmployee;
+	
+	private WebClient webClient;
+	
+	@PostConstruct
+	public void build() {
+		webClient = WebClient.builder().baseUrl(baseUrl).build();
+	}
+	
+	public EmployeRegisterResp registerEmployee(SignupEmployeeReq request) {
+		try {
+			Mono<EmployeRegisterResp> response = webClient.post()
+														 .uri(apiRegisterEmployee)
+														 .accept(MediaType.APPLICATION_JSON)
+														 .header(HttpHeaders.AUTHORIZATION, "bearer  ")
+														 .retrieve()
+														 .bodyToMono(EmployeRegisterResp.class);
+			return response.block();
+		} catch (WebClientResponseException e) {
+			// TODO: handle exception
+			switch (e.getStatusCode()) {
+			case CONFLICT:
+				
+				break;
+			case INTERNAL_SERVER_ERROR:
+			default:
+				break;
+			}
+		}
+		
+		return null;
+		
+	}
+}

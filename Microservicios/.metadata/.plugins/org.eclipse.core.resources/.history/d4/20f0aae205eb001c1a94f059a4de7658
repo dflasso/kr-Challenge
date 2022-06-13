@@ -1,0 +1,13 @@
+package ec.com.danylassosolution.users.services.models;
+
+import ec.com.danylassosolution.users.models.entities.User;
+
+public interface FindUserById {
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public User find(Long id);
+}

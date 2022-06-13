@@ -1,0 +1,8 @@
+package ec.com.danylassosolution.authentication.security;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AppUserDetailsService {
+
+}

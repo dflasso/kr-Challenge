@@ -1,0 +1,15 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import lombok.Data;
+
+@Data
+public class EmployeeUpdateReq {
+
+	private String ci;
+	
+	private String names;
+	
+	private String lastnames;
+	
+	private String email;
+}

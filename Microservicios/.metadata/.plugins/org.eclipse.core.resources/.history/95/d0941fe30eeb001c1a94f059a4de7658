@@ -1,0 +1,12 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.services.models.SaveAllAdress;
+
+@Service
+@Primary
+public class SaveAllAdressImp implements SaveAllAdress{
+
+}

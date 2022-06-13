@@ -1,0 +1,6 @@
+package ec.com.danylassosolution.users.services.models;
+
+public class DeleteUser {
+
+	public void delete(Long id);
+}

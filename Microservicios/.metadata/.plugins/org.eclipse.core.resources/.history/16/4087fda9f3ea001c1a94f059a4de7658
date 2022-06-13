@@ -1,0 +1,15 @@
+package ec.com.danylassosolution.users.exceptions;
+
+/**
+ * Excepcion lanzada en los errores al acceder a los datos
+ * @author dlasso
+ *
+ */
+public class DataException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+}

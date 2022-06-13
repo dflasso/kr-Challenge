@@ -1,0 +1,20 @@
+package ec.com.danyLassoSolution.emailNotifier.model.dto;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+
+/**
+ * 
+ * @author dlasso
+ * Datos enviados 
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class LoginNotification extends Notification {
+
+	private String username;
+	private String rol;
+	private String tempPassword;
+	private String expirationDatePassword;
+}

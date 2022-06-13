@@ -1,0 +1,7 @@
+package ec.com.danylassosolution.authentication.services.models.imp;
+
+import ec.com.danylassosolution.authentication.services.models.FindUserAppByNickname;
+
+public class FindUserAppByNicknameImp implements FindUserAppByNickname {
+
+}

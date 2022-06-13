@@ -1,0 +1,33 @@
+package ec.com.danylassosolution.users.converters;
+
+import java.util.stream.Stream;
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+
+import ec.com.danylassosolution.users.models.constants.VaccineType;
+
+@Converter(autoApply = true)
+public class VaccineTypeConverter implements AttributeConverter<VaccineType, String> {
+
+	@Override
+	public String convertToDatabaseColumn(VaccineType attribute) {
+		if(attribute == null) {
+			return null;
+		}
+		return attribute.getCode();
+	}
+
+	@Override
+	public VaccineType convertToEntityAttribute(String dbData) {
+		if (dbData == null) {
+            return null;
+        }
+		
+		Stream.of(VaccineType.values())
+		          .filter(c -> c.getCode().equals(code))
+		          .findFirst()
+		          .orElseThrow(IllegalArgumentException::new);
+	}
+
+}

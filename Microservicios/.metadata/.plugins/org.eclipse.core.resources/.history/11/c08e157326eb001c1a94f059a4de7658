@@ -1,0 +1,32 @@
+package ec.com.danylassosolution.authentication.services.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserReq;
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserResp;
+import ec.com.danylassosolution.authentication.services.LoginUserService;
+
+/**
+ * 
+ * @author dlasso
+ *
+ */
+@Service
+@Primary
+public class LoginUserServiceImp implements LoginUserService {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Override
+	public LoginUserResp login(LoginUserReq request) {
+		Authentication authentication =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsernameOrEmail(), request.getPassword()) );
+		return null;
+	}
+
+}

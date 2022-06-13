@@ -1,0 +1,5 @@
+package ec.com.danylassosolution.authentication.exceptions;
+
+public class AuthException {
+
+}

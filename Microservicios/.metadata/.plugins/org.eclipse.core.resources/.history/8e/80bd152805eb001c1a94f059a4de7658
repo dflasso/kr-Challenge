@@ -1,0 +1,11 @@
+package ec.com.danylassosolution.users.validations;
+
+import java.time.LocalDate;
+
+import javax.validation.ConstraintValidator;
+
+import ec.com.danylassosolution.users.annotations.BirthdayValidationFullAge;
+
+public class BirthdayCheck  implements ConstraintValidator<BirthdayValidationFullAge, LocalDate>{
+
+}

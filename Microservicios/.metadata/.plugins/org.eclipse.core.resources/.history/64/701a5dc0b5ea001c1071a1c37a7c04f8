@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true #http://localhost:8080/h2-console
+  mail:
+    host: smtp.mailgun.org
+    port: 587
+    username: danny_kruger_challenge@sandbox88c63985b2714131b419885f308d80ae.mailgun.org
+    password: hA^My5!Sk55YhZ1
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

@@ -1,0 +1,16 @@
+package ec.com.danyLassoSolution.emailNotifier.config;
+
+import org.springframework.scheduling.annotation.AsyncConfigurer;
+
+/**
+ * Habilita procesos asincrónos, es decir, al llamar 
+ * métodos asincrónos el sistema no esperará a que se complete el método.
+ * @author dlasso
+ * @see https://www.baeldung.com/spring-async
+ */
+@Configuration
+@EnableAsync
+
+public class SpringAsyncConfig  implements AsyncConfigurer {
+
+}

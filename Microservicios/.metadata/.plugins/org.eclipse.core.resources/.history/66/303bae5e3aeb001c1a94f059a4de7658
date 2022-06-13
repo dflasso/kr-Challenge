@@ -1,0 +1,17 @@
+package ec.com.danylassosolution.authentication.models.dtos;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import ec.com.danylassosolution.authentication.annotations.CI;
+
+
+public class SignupEmployeeResp {
+	
+	private String ci;
+	
+	private String names;
+		
+}

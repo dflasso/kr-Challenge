@@ -1,0 +1,39 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.repositories.UserRepository;
+import ec.com.danylassosolution.users.services.models.FindUserByNumDocument;
+import ec.com.danylassosolution.users.utils.LoggerCustom;
+
+@Service
+@Primary
+public class FindUserByNumDocumentImp implements FindUserByNumDocument {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private LoggerCustom logger;
+	
+	@Override
+	public User find(String numDocument) {
+		List<User> users = userRepository.findByNumDocument(numDocument);
+		
+		if(users == null || users.isEmpty()) {
+			
+		}
+		
+		if(users.size() != 1) {
+			
+		}
+		
+		return null;
+	}
+
+}

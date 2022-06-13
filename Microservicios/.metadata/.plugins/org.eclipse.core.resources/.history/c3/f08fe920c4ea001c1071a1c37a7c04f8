@@ -1,0 +1,8 @@
+package ec.com.danylassosolution.users.converters;
+
+import javax.persistence.Converter;
+
+@Converter(autoApply = true)
+public class AddressTypesConverter {
+
+}

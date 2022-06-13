@@ -1,0 +1,9 @@
+package ec.com.danyLassoSolution.emailNotifier.model.dto;
+
+import java.util.Map;
+
+public class NotificationSendResponse<T extends NotificationResponseGeneric> {
+	private Map<String,  ? > moreInformation;
+    private T notification;
+
+}

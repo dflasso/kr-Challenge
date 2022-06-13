@@ -1,0 +1,15 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import ec.com.danylassosolution.users.models.dtos.EmployeeRegisterReq;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.services.models.SaveEmployee;
+
+public class SaveEmployeeImp implements SaveEmployee {
+
+	@Override
+	public User create(EmployeeRegisterReq request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,22 @@
+package ec.com.danyLassoSolution.emailNotifier.model.constants;
+
+public enum AppErrorsCodesAndMessages {
+	FIELD_VALIDATION("N001", "");
+	
+	private String code;
+	private String message;
+	
+	public String getCode() {
+		return code;
+	}
+	public String getMessage() {
+		return message;
+	}
+	private AppErrorsCodesAndMessages(String code, String message) {
+		this.code = code;
+		this.message = message;
+	}
+	
+	
+	
+}

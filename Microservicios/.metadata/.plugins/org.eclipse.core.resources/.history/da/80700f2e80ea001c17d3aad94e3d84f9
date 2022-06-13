@@ -1,0 +1,10 @@
+package ec.com.danyLassoSolution.emailNotifier.senders;
+
+import org.springframework.mail.javamail.JavaMailSender;
+
+import ec.com.danyLassoSolution.emailNotifier.model.entities.EmailSetting;
+
+public interface SenderCreator {
+
+	public JavaMailSender create(EmailSetting emailSettings);
+}

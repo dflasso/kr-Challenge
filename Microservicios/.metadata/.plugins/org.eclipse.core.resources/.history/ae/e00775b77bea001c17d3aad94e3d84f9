@@ -1,0 +1,31 @@
+package ec.com.danyLassoSolution.emailNotifier.senders;
+
+import java.util.Optional;
+
+import ec.com.danyLassoSolution.emailNotifier.model.dto.Notification;
+import ec.com.danyLassoSolution.emailNotifier.model.dto.NotificationSendResponse;
+
+/**
+ * 
+ * @author danny_lasso
+ * Mediante el patron fachada, envuelve los senderes y selección de credenciales
+ *
+ */
+public interface Notifier {
+	
+	/**
+	 * 
+	 * @param notification - datos necesarios para enviar el correo de login
+	 * @return Objeto con la respuesta del resultado del proceso de Envío
+	 */
+	public NotificationSendResponse<? extends Notification> sendEmailLoginAsync(Optional<? extends Notification> notification);
+	
+	/**
+	 * 
+	 * @param notification - datos necesarios para enviar el correo
+	 * @return
+	 */
+	public NotificationSendResponse<? extends Notification> sendEmailRegister(Optional<? extends Notification> notification);
+	
+	
+}

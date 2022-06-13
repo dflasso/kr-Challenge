@@ -1,0 +1,18 @@
+package ec.com.danyLassoSolution.emailNotifier.exceptions;
+
+import ec.com.danyLassoSolution.emailNotifier.model.dto.ApiError;
+import lombok.Getter;
+
+@Getter
+public class NotFoundException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private ApiError apiError;
+	
+	
+
+}

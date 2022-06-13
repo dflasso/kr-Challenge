@@ -1,0 +1,13 @@
+package ec.com.danyLassoSolution.emailNotifier.services.model;
+
+import org.springframework.stereotype.Service;
+
+import ec.com.danyLassoSolution.emailNotifier.model.entities.EmailProviderSetting;
+
+@Service
+public class FindEmailProviderSettingService {
+
+	public EmailProviderSetting findSettingsByDefault() {
+		return null;
+	}
+}

@@ -1,0 +1,8 @@
+package ec.com.danyLassoSolution.emailNotifier.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SwaggerConfig {
+
+}

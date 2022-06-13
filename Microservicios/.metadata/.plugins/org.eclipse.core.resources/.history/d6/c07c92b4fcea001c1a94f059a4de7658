@@ -1,0 +1,54 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import javax.validation.ConstraintViolationException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.exceptions.DataException;
+import ec.com.danylassosolution.users.models.constants.AppErrorsCodesAndMessages;
+import ec.com.danylassosolution.users.models.dtos.ApiError;
+import ec.com.danylassosolution.users.models.dtos.ApiValidationError;
+import ec.com.danylassosolution.users.models.dtos.EmployeeRegisterReq;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.repositories.UserRepository;
+import ec.com.danylassosolution.users.services.models.SaveEmployee;
+import ec.com.danylassosolution.users.utils.LoggerCustom;
+
+@Service
+@Primary
+public class SaveEmployeeImp implements SaveEmployee {
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private LoggerCustom logger;
+
+	@Override
+	public User create(EmployeeRegisterReq request) {
+		
+		try {
+			User user = request.toUserEntity();
+			return userRepository.save(user);
+		} catch (DataAccessException e) {
+			ApiError apiError = new ApiError(HttpStatus.CONFLICT, AppErrorsCodesAndMessages.USER_SAVE_ERROR.getMessage());
+			
+			ApiValidationError subError = ApiValidationError.builder()
+															.code(AppErrorsCodesAndMessages.USER_SAVE_ERROR.getCode())
+															.object(request.toString())
+															.message(e.getMessage())
+															.rejectedValue(request)
+															.build();
+			apiError.addSubError(subError);
+			
+			logger.error(apiError, getClass(), "create", e);
+			
+			throw new DataException(apiError);
+		} 
+	}
+
+}

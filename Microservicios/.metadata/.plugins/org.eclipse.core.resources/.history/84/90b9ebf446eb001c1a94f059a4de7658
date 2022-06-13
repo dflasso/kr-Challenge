@@ -1,0 +1,11 @@
+package ec.com.danylassosolution.authentication.services.models;
+
+import ec.com.danylassosolution.authentication.models.dtos.SignupEmployeeResp;
+import ec.com.danylassosolution.authentication.models.entities.UserApp;
+
+public interface SaveUserCredentials {
+
+	public UserApp save();
+	
+	public SignupEmployeeResp saveEmployee();
+}

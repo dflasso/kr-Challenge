@@ -1,0 +1,34 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.Vaccines;
+import lombok.Data;
+
+@Data
+public class EmployeeUpdateReq {
+
+	@NotNull(message = "Id is required")
+	@Min(value = 1, message = "Id invalid")
+	private Long id;
+	
+	private LocalDate birthday;
+	
+	@NotNull(message = "address of employee is required")
+	private Address address;
+	
+	@NotEmpty(message = "Cellphone si required")
+	@Size(min = 10, max = 13, message = "Cellphone must have of 10  to 13 digits")
+	private String cellphone;
+	
+	private Boolean isVaccinated;
+	
+	private List<Vaccines> vaccines;
+}

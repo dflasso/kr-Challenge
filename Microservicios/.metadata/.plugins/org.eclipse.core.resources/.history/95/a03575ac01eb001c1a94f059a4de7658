@@ -1,0 +1,24 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.Vaccines;
+import lombok.Data;
+
+@Data
+public class EmployeeUpdateReq {
+
+	private Long id;
+	
+	private LocalDate birthday;
+	
+	private Address address;
+	
+	private String cellphone;
+	
+	private Boolean isVaccinated;
+	
+	private List<Vaccines> vaccines;
+}

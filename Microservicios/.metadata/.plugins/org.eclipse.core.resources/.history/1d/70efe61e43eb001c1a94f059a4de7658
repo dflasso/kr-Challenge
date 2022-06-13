@@ -1,0 +1,17 @@
+package ec.com.danylassosolution.authentication.security;
+
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author Dany_Lasso
+ * @version 1.0.0
+ * @apiNote Componente inyectado en SecurityConfig, en el método configure(HttpSecurity http)
+ */
+@Component
+@Slf4j
+public class UnauthorizedHandler implements AuthenticationEntryPoint {
+
+}

@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.authentication.services;
+
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserReq;
+import ec.com.danylassosolution.authentication.models.dtos.LoginUserResp;
+
+public interface LoginUserService {
+
+	public LoginUserResp login(LoginUserReq request)
+}

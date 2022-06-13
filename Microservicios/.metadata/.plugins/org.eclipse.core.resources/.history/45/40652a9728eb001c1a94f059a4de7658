@@ -1,0 +1,40 @@
+package ec.com.danylassosolution.authentication.security;
+
+import java.util.Date;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class JwtTokenProvider {
+	
+	@Value("${config.security.user-root.nickname}")
+	private String rootNickname;
+	
+	@Autowired
+	private JwtConfig jwtConfig;
+	
+	public String generateJwt(final Authentication authentication, Map<String, String> claims) {
+		final boolean isUserRoot = authentication.getName().equals(rootNickname);
+		
+		Date now = new Date();
+		Date expiryDate = new Date(now.getTime() + jwtConfig.getExpiration());
+		
+		if(isUserRoot) {
+			return Jwts.builder().setSubject(authentication.getName())
+								 .setExpiration(expiryDate)
+								 .signWith(SignatureAlgorithm.HS512, jwtConfig.getSecret())
+								 .addClaims(claims)
+								 .
+		}
+	}
+
+}

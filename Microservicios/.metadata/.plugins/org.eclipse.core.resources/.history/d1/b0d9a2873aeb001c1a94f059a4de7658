@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.authentication.services;
+
+import ec.com.danylassosolution.authentication.models.dtos.SignupEmployeeReq;
+
+public interface SignupEmployeesServices {
+
+	public SignupEmployeeReq signupEmployee();
+	
+}

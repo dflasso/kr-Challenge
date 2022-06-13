@@ -1,0 +1,27 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.models.entities.Vaccines;
+import ec.com.danylassosolution.users.repositories.VaccinesRepository;
+import ec.com.danylassosolution.users.services.models.SaveAllVaccines;
+
+@Service
+@Primary
+public class SaveAllVaccinesImp implements SaveAllVaccines {
+	
+	@Autowired
+	private VaccinesRepository vaccinesRepository; 
+
+	@Override
+	public List<Vaccines> saveAll(List<Vaccines> vaccines, User user) {
+		
+		return null;
+	}
+
+}

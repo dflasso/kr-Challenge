@@ -1,0 +1,5 @@
+package ec.com.danyLassoSolution.emailNotifier.exceptions;
+
+public class NotFoundException extends RuntimeException {
+
+}

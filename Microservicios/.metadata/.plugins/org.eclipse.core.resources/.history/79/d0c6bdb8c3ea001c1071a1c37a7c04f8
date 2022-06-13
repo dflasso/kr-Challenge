@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.users.models.constants;
+
+public enum AddressTypes {
+	HOME,
+	JOB,
+	ALTERNATIVE;
+	
+	
+}

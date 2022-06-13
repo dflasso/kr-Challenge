@@ -1,0 +1,10 @@
+package ec.com.danylassosolution.users.exceptions;
+
+public class DataException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+}

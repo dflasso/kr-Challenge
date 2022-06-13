@@ -1,0 +1,16 @@
+package ec.com.danylassosolution.users.models.constants;
+
+public enum AddressTypes {
+	HOME("01"), JOB("02"), OTHER("03");
+
+	private String code;
+
+	public String getCode() {
+		return code;
+	}
+
+	private AddressTypes(String code) {
+		this.code = code;
+	}
+
+}

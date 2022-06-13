@@ -1,0 +1,19 @@
+package ec.com.danylassosolution.authentication.services.models.imp;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.authentication.models.constants.UserApp;
+import ec.com.danylassosolution.authentication.services.models.FindUserAppByNickname;
+
+@Service
+@Primary
+public class FindUserAppByNicknameImp implements FindUserAppByNickname {
+
+	@Override
+	public UserApp find(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

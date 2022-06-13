@@ -1,0 +1,20 @@
+package ec.com.danylassosolution.authentication.services.imp;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.authentication.models.dtos.SignupEmployeeReq;
+import ec.com.danylassosolution.authentication.models.dtos.SignupEmployeeResp;
+import ec.com.danylassosolution.authentication.services.SignupEmployeesServices;
+
+@Service
+@Primary
+public class SignupEmployeesServicesImp implements SignupEmployeesServices {
+
+	@Override
+	public SignupEmployeeResp signupEmployee(SignupEmployeeReq request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,7 @@
+package ec.com.danylassosolution.authentication.services.models.imp;
+
+import ec.com.danylassosolution.authentication.services.models.SaveUserCredentials;
+
+public class SaveUserCredentialsImp implements SaveUserCredentials {
+
+}

@@ -1,0 +1,13 @@
+package ec.com.danyLassoSolution.emailNotifier.services.model;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TransformerEmailProviderSettingProperties {
+
+	public Map<String, Object> transform(){
+		
+	}
+}

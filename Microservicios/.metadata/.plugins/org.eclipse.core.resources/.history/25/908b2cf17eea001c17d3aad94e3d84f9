@@ -1,0 +1,16 @@
+package ec.com.danyLassoSolution.emailNotifier.model.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "email_settings")
+public class EmailSetting {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idContrasenia")
+	private Long id;
+
+}

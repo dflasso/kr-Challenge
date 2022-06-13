@@ -1,0 +1,64 @@
+package ec.com.danyLassoSolution.emailNotifier.model.dto;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+import ec.com.danyLassoSolution.emailNotifier.utils.LowerCaseClassNameResolver;
+import lombok.Data;
+
+/**
+ * Objeto estandar de respuestas cuando existen errores
+ * @author dlasso
+ *
+ */
+@Data
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.CUSTOM, property = "error", visible = true)
+@JsonTypeIdResolver(LowerCaseClassNameResolver.class)
+public class ApiError {
+	private HttpStatus status;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+	private LocalDateTime timestamp;
+	private String message;
+	private List<ApiSubError> subErrors;
+	
+	public ApiError(HttpStatus _status, String _message) {
+		this.status = _status;
+		timestamp = LocalDateTime.now();
+		this.message = _message;
+	}
+	
+	public ApiError(HttpStatus _status) {
+		this.status = _status;
+		timestamp = LocalDateTime.now();
+	}
+
+		
+	public void addSubError(ApiSubError subError) {
+		if (subErrors == null) {
+			subErrors = new ArrayList<ApiSubError>();
+		}
+		subErrors.add(subError);
+	}
+	
+	public void addSubErrors(ApiSubError ...subError) {
+		if (subErrors == null) {
+			subErrors = new ArrayList<ApiSubError>();
+		}
+		subErrors.addAll(subErrors);
+	}
+	
+	public void addSubErrors(ApiSubError ...subError) {
+		if (subErrors == null) {
+			subErrors = new ArrayList<ApiSubError>();
+		}
+		subErrors.addAll(subErrors);
+	}
+
+}

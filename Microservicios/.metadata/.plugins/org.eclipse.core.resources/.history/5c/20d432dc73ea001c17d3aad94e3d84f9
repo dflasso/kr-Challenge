@@ -1,0 +1,15 @@
+package ec.com.danyLassoSolution.emailNotifier.model.dto;
+
+/**
+ * 
+ * @author dlasso
+ *
+ */
+public class NotificationResponseGeneric {
+	private String from;
+    private String subject;
+    private String to;
+    private String message;
+
+    
+}

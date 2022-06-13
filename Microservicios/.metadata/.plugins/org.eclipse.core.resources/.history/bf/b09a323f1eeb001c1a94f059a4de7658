@@ -1,0 +1,18 @@
+package ec.com.danylassosolution.users.models.constants;
+
+public enum ApiDocumentation {
+
+	USERS_FILTER("");
+	
+	private String notes;
+
+	public String getNotes() {
+		return notes;
+	}
+
+	private ApiDocumentation(String notes) {
+		this.notes = notes;
+	}
+	
+	
+}

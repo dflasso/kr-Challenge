@@ -1,0 +1,36 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.dtos.EmployeeUpdateReq;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.repositories.UserRepository;
+import ec.com.danylassosolution.users.services.models.FindUserById;
+import ec.com.danylassosolution.users.services.models.UpdateEmployee;
+import ec.com.danylassosolution.users.utils.LoggerCustom;
+
+@Service
+@Primary
+public class UpdateEmployeeImp implements UpdateEmployee {
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private FindUserById findUserById;
+
+	@Autowired
+	private LoggerCustom logger;
+
+	@Override
+	public User update(EmployeeUpdateReq request) {
+		User user = findUserById.find(request.getId());
+		
+		user = request.toUserEntity(user);
+		
+		return null;
+	}
+
+}

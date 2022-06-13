@@ -1,0 +1,26 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.services.models.DeleteUser;
+
+public class DeleteUserImp implements DeleteUser {
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(String numDocument) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

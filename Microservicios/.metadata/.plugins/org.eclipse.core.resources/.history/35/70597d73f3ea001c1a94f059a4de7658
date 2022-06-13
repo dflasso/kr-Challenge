@@ -1,0 +1,33 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.dtos.EmployeeRegisterReq;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.repositories.UserRepository;
+import ec.com.danylassosolution.users.services.models.SaveEmployee;
+
+@Service
+@Primary
+public class SaveEmployeeImp implements SaveEmployee {
+	
+	@Autowired
+	private UserRepository userRepository;
+
+	@Override
+	public User create(EmployeeRegisterReq request) {
+		
+		try {
+			User user = request.toUserEntity();
+			user = userRepository.save(user);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		return null;
+	}
+
+}

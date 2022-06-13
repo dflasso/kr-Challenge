@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.authentication.models.dtos;
+
+import lombok.Data;
+
+@Data
+public class LoginUserReq {
+
+	public String usernameOrEmail;
+}

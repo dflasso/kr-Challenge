@@ -1,0 +1,10 @@
+package ec.com.danyLassoSolution.emailNotifier.senders.imp;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+@Service("sender-email-smtp")
+@Primary
+public class SenderProviderSMTP {
+
+}

@@ -1,0 +1,25 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.dtos.EmployeeUpdateReq;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.repositories.UserRepository;
+import ec.com.danylassosolution.users.services.models.UpdateEmployee;
+
+@Service
+@Primary
+public class UpdateEmployeeImp implements UpdateEmployee {
+	
+	@Autowired
+	private UserRepository userRepository;
+
+	@Override
+	public User update(EmployeeUpdateReq request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

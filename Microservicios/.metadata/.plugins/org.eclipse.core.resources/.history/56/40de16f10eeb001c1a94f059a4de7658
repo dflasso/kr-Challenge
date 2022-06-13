@@ -1,0 +1,22 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import java.util.List;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.services.models.SaveAllAdress;
+
+@Service
+@Primary
+public class SaveAllAdressImp implements SaveAllAdress{
+
+	@Override
+	public List<Address> saveAll(List<Address> address, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

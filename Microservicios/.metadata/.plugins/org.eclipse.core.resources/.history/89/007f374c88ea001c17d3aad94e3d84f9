@@ -1,0 +1,5 @@
+package ec.com.danyLassoSolution.emailNotifier.utils;
+
+public class LowerCaseClassNameResolver  extends TypeIdResolverBase {
+
+}

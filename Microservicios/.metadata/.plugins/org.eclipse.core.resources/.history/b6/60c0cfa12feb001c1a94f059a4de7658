@@ -1,0 +1,10 @@
+package ec.com.danylassosolution.authentication.models.constants;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "userApp")
+public class UserApp {
+
+}

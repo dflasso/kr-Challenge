@@ -1,0 +1,16 @@
+package ec.com.danylassosolution.authentication.security;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class JwtTokenProvider {
+	
+	public String generateJwt(final Authentication authentication) {
+		
+	}
+
+}

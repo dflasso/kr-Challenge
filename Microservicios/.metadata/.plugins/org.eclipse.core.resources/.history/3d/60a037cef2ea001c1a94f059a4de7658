@@ -1,0 +1,10 @@
+package ec.com.danylassosolution.users.services.models;
+
+import ec.com.danylassosolution.users.models.dtos.EmployeeRegisterReq;
+import ec.com.danylassosolution.users.models.entities.User;
+
+public interface SaveEmployee {
+
+	
+	public User create(EmployeeRegisterReq request);
+}

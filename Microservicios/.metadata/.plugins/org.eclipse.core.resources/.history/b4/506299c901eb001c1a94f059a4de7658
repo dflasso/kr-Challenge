@@ -1,0 +1,29 @@
+package ec.com.danylassosolution.users.models.dtos;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.Vaccines;
+import lombok.Data;
+
+@Data
+public class EmployeeUpdateReq {
+
+	@NotNull
+	@Min(value = 1)
+	private Long id;
+	
+	private LocalDate birthday;
+	
+	private Address address;
+	
+	private String cellphone;
+	
+	private Boolean isVaccinated;
+	
+	private List<Vaccines> vaccines;
+}

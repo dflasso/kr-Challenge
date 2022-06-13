@@ -1,0 +1,64 @@
+package ec.com.danylassosolution.authentication.security;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import ec.com.danylassosolution.authentication.models.constants.SelfClaim;
+import io.jsonwebtoken.Claims;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
+	
+	private final JwtConfig jwtConfig;
+    private JwtTokenProvider tokenProvider;
+    private String rootNickname;
+
+	public JwtTokenAuthenticationFilter(JwtConfig jwtConfig, JwtTokenProvider tokenProvider, String rootNickname) {
+		super();
+		this.jwtConfig = jwtConfig;
+		this.tokenProvider = tokenProvider;
+		this.rootNickname = rootNickname;
+	}
+
+
+
+
+
+
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		log.info("Authentication Request For '{}'", request.getRequestURL());
+        
+        String header = request.getHeader(jwtConfig.getHeader());
+        
+        if (header == null || !header.startsWith(jwtConfig.getPrefix())) {
+        	filterChain.doFilter(request, response); 
+            return;
+        }
+        
+        String token = header.replace(jwtConfig.getPrefix(), "");
+		
+        if(tokenProvider.validateToken(token)) {
+        	 Claims claims = tokenProvider.getClaimsFromJWT(token);
+             String username = claims.getSubject();
+             
+             UsernamePasswordAuthenticationToken auth = null;
+             
+             if(rootNickname.equals(username)) {
+            	 List<String> authorities = (List<String>) claims.get(SelfClaim.rol.toString());
+            	 auth = new UsernamePasswordAuthenticationToken(auth, authorities, null);
+             }
+        }
+	}
+
+}

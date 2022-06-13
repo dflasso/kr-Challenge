@@ -1,0 +1,80 @@
+version: '3.9'
+services:
+  api-gateway:
+    image: ${URL_REPOSITORIO_IMG_PRIV}/gateway-microservices:${PROFILE}-latest
+    container_name: api-gateway
+    restart: always
+    environment:
+    - SPRING_PROFILES_ACTIVE=${PROFILE}
+    ports:
+      - "9001:8080"
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    networks:
+      - lan-krugger-network
+  auth:
+    image: ${URL_REPOSITORIO_IMG_PRIV}/auth:${PROFILE}-latest
+    container_name: auth
+    restart: always
+    environment:
+    - SPRING_PROFILES_ACTIVE=${PROFILE}
+    - SPRING_DATASOURCE_URL=${DB_URL}
+    - SPRING_DATASOURCE_USERNAME=${DB_USER}
+    - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+    - SPRING_DATASOURCE_DRIVER-CLASS-NAME=${DB_DRIVER_CLASS}
+    - SPRING_JPA_DATABASE-PLATFORM=${DB_PLATFORM}
+    - microservices.users.host.apis.register-employee=${WS_USERS}
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    networks:
+      - lan-krugger-network
+  users:
+    image: ${URL_REPOSITORIO_IMG_PRIV}/users:${PROFILE}-latest
+    container_name: users
+    restart: always
+    environment:
+    - SPRING_PROFILES_ACTIVE=${PROFILE}
+    - SPRING_DATASOURCE_URL=${DB_URL}
+    - SPRING_DATASOURCE_USERNAME=${DB_USER}
+    - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+    - SPRING_DATASOURCE_DRIVER-CLASS-NAME=${DB_DRIVER_CLASS}
+    - SPRING_JPA_DATABASE-PLATFORM=${DB_PLATFORM}
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    networks:
+      - lan-krugger-network
+  notifier:
+    image: ${URL_REPOSITORIO_IMG_PRIV}/notifier:${PROFILE}-latest
+    container_name: notifier
+    restart: always
+    environment:
+    - SPRING_PROFILES_ACTIVE=${PROFILE}
+    - SPRING_DATASOURCE_URL=${DB_URL}
+    - SPRING_DATASOURCE_USERNAME=${DB_USER}
+    - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+    - SPRING_DATASOURCE_DRIVER-CLASS-NAME=${DB_DRIVER_CLASS}
+    - SPRING_JPA_DATABASE-PLATFORM=${DB_PLATFORM}
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    networks:
+      - lan-krugger-network
+networks:
+  lan-krugger-network:
+    external:
+      name: lan-krugger

@@ -1,0 +1,19 @@
+package ec.com.danyLassoSolution.emailNotifier.utils;
+
+import org.springframework.stereotype.Component;
+
+import ec.com.danyLassoSolution.emailNotifier.model.dto.ApiError;
+import lombok.extern.slf4j.Slf4j;
+
+@Component
+@Slf4j
+public class LoggerCustom {
+
+	public void error(ApiError apiError, Class<?> classFeacture, String method, Throwable ex) {
+		log.error("", classFeacture.getName(), method);
+	}
+	
+	public void error(ApiError apiError, Class<?> ClassFeacture, String method) {
+		
+	}
+}

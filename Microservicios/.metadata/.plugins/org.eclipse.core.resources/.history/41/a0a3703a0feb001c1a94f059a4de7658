@@ -1,0 +1,35 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.repositories.AddressRepository;
+import ec.com.danylassosolution.users.services.models.SaveAllAdress;
+import ec.com.danylassosolution.users.utils.LoggerCustom;
+
+@Service
+@Primary
+public class SaveAllAdressImp implements SaveAllAdress{
+	
+	@Autowired
+	private AddressRepository addressRepository;
+	
+	@Autowired
+	private LoggerCustom logger; 
+
+	@Override
+	public List<Address> saveAll(List<Address> address, User user) {
+		try {
+			return addressRepository.saveAll(address);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+
+}

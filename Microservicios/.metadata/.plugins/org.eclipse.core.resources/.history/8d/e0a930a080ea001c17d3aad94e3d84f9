@@ -1,0 +1,5 @@
+package ec.com.danyLassoSolution.emailNotifier.senders.imp;
+
+public class SenderProviderSMTP {
+
+}

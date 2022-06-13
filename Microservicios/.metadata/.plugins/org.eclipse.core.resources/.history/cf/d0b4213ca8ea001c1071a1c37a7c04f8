@@ -1,0 +1,28 @@
+package ec.com.danyLassoSolution.emailNotifier.services.model;
+
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
+
+import ec.com.danyLassoSolution.emailNotifier.model.entities.EmailProviderSetting;
+
+@Service
+public class TransformerEmailProviderSettingProperties {
+	
+	private Gson gson;
+	
+	@PostConstruct
+	public void init() {
+		gson = new Gson();
+	}
+	public Map<String, Object> transform(EmailProviderSetting emailProviderSetting){
+		String propertiesAsJson = emailProviderSetting.getPropertiesAsJson();
+		
+		gson.fromJson(propertiesAsJson, Map);
+		
+	}
+}

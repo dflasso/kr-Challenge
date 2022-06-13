@@ -1,0 +1,26 @@
+package ec.com.danylassosolution.authentication.webclients;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import lombok.Getter;
+
+@Service
+@Getter
+public class WebClientUsers {
+
+	@Value("${microservices.users}")
+	private String baseUrl;
+	
+	private WebClient webClient;
+	
+	@PostConstruct
+	public void build() {
+		webClient = WebClient.builder().baseUrl(baseUrl).build();
+	}
+	
+	 
+}

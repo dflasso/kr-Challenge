@@ -1,0 +1,81 @@
+package ec.com.danylassosolution.users.services.models.imp;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
+import ec.com.danylassosolution.users.exceptions.DataException;
+import ec.com.danylassosolution.users.models.constants.AppErrorsCodesAndMessages;
+import ec.com.danylassosolution.users.models.dtos.ApiError;
+import ec.com.danylassosolution.users.models.dtos.ApiValidationError;
+import ec.com.danylassosolution.users.models.dtos.EmployeeUpdateReq;
+import ec.com.danylassosolution.users.models.entities.Address;
+import ec.com.danylassosolution.users.models.entities.User;
+import ec.com.danylassosolution.users.models.entities.Vaccines;
+import ec.com.danylassosolution.users.repositories.UserRepository;
+import ec.com.danylassosolution.users.services.models.FindUserById;
+import ec.com.danylassosolution.users.services.models.SaveAllAdress;
+import ec.com.danylassosolution.users.services.models.SaveAllVaccines;
+import ec.com.danylassosolution.users.services.models.UpdateEmployee;
+import ec.com.danylassosolution.users.utils.LoggerCustom;
+
+@Service
+@Primary
+public class UpdateEmployeeImp implements UpdateEmployee {
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private FindUserById findUserById;
+	
+	@Autowired
+	private SaveAllVaccines saveAllVaccines;
+	
+	@Autowired
+	private SaveAllAdress saveAllAdress;
+
+	@Autowired
+	private LoggerCustom logger;
+
+	@Override
+	public User update(EmployeeUpdateReq request) {
+		User user = findUserById.find(request.getId());
+		
+		user = request.toUserEntity(user);
+		
+		List<Vaccines> vaccines = user.getVaccines();
+		List<Address> address = user.getAddress();
+		
+		try {
+			user = userRepository.save(user);
+			System.out.println("vac    " +vaccines.get(0).getType());
+			saveAllVaccines.saveAll(vaccines, user);
+
+			saveAllAdress.saveAll(address, user);
+			
+			return user;
+		} catch (DataAccessException e) {
+			ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, AppErrorsCodesAndMessages.USER_SAVE_ERROR.getMessage());
+			
+			ApiValidationError subError = ApiValidationError.builder()
+															.code(AppErrorsCodesAndMessages.USER_SAVE_ERROR.getCode())
+															.object(request.toString())
+															.message(e.getMessage())
+															.rejectedValue(request)
+															.build();
+			apiError.addSubError(subError);
+			
+			logger.error(apiError, getClass(), "update", e);
+			
+			throw new DataException(apiError);
+		}
+		
+	}
+
+}
+ 

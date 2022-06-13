@@ -1,0 +1,50 @@
+package ec.com.danylassosolution.authentication.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import ec.com.danylassosolution.authentication.models.constants.Rols;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+	
+	@Value("${security.service.username}")
+    private String serviceUsername;
+
+    @Value("${security.service.password}")
+    private String servicePassword;
+	
+	  @Override
+	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	      
+	      //Para la comunicación entre microservicios (credenciales que no son de DB)
+	      auth.inMemoryAuthentication()
+	                .withUser(serviceUsername)
+	                .password(passwordEncoder().encode(servicePassword))
+	                .roles(Rols.MICROSERVICES.toString());
+	      
+	    }
+
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/v2/api-docs", 
+                "/v3/api-docs/**",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/swagger-ui/**",
+                "/webjars/**");
+    }
+}

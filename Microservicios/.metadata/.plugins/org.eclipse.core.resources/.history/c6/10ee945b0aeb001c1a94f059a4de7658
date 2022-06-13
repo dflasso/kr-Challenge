@@ -1,0 +1,9 @@
+package ec.com.danylassosolution.users.converters;
+
+import javax.persistence.AttributeConverter;
+
+import ec.com.danylassosolution.users.models.constants.VaccinationState;
+
+public class VaccinationStateConverter implements AttributeConverter<VaccinationState, String> {
+
+}
