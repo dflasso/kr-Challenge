@@ -4,9 +4,9 @@
 
 La solución plantiada fue una arquitectura de microservicios, cada microservicio será contenerizado y levantado en un orquestador de contenedores.
 
-[Arquitectura Planteada]()
+[Arquitectura Planteada](https://github.com/dflasso/kr-Challenge/blob/main/Kugger%20challenge-Arquitectura.drawio.pdf)
 
-[Modelo de Datos]()
+[Modelo de Datos](https://github.com/dflasso/kr-Challenge/blob/main/Kugger%20challenge-Modelos%20de%20Datos.drawio.pdf)
 
 # Estandares de código
 - La códificación de los microservicios se realizo siguiendo los principios **SOLID**
